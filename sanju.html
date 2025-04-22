@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeev - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 30px;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .profile-img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 2s ease-in;
+        }
+        
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .skills {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-item {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover .skill-logo {
+            transform: scale(1.1);
+        }
+        
+        /* Education Section */
+        #education {
+            background-color: var(--light-color);
+        }
+        
+        .education-item {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .education-percentage {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .education-percentage:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        /* Professional Training Section */
+        #training {
+            background-color: white;
+        }
+        
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .training-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .training-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .training-card h3 {
+            color: var(--primary-color);
+        }
+        
+        /* Achievements Section */
+        #achievements {
+            background-color: var(--light-color);
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .achievement-info {
+            padding: 20px;
+        }
+        
+        .view-certificate {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .view-certificate:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Projects Section */
+        #projects {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        /* Certificate Modals */
+        .certificate-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .certificate-content {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .certificate-content img {
+            width: 100%;
+            height: auto;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            margin: 30px 0;
+        }
+        
+        .contact-info p {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">San<span>jeev</span></div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#training">Training</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img-container">
+                    <img src="https://drive.google.com/file/d/1OKK5aF8jhTRwRissRDDkp12kVBMd0Jhl/view?usp=drivesdk" alt="Sanjeev" class="profile-img">
+                </div>
+                <h1>Sanjeev.R</h1>
+                <p>Full Stack Developer | Python & Java Programmer | Web Designer | Web Developer</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who Am I?</h3>
+                    <p>I'm a passionate developer with expertise in PHP, Python, Java, and web technologies. I love creating innovative solutions to real-world problems and continuously learning new technologies.</p>
+                    <p>My objective is to get an opportunity where I can make the best of my potential and contribute to the organization's growth.</p>
+                    <p>I'm a good listener, team player, and problem solver with strong interpersonal skills.</p>
+                </div>
+                <div class="skills">
+                    <h3>My Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-logo">
+                            <p>Python</p>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-logo">
+                            <p>Java</p>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="skill-logo">
+                            <p>PHP</p>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="skill-logo">
+                            <p>SQL</p>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="skill-logo">
+                            <p>Linux</p>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="skill-logo">
+                            <p>HTML/CSS/JS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">My Education</h2>
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <h3>B.Sc. Computer Science</h3>
+                        <p>Nalla Muthu Gounder Mahalingam College</p>
+                    </div>
+                    <div class="education-percentage">68%</div>
+                </div>
+                <p>Graduated with a degree in Computer Science, gaining knowledge in programming, algorithms, and software development.</p>
+            </div>
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <h3>HSC</h3>
+                        <p>GKN Higher Secondary School, Pungamuthur</p>
+                    </div>
+                    <div class="education-percentage">85%</div>
+                </div>
+                <p>Completed higher secondary education with focus on science and mathematics.</p>
+            </div>
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <h3>SSLC</h3>
+                        <p>GKN Higher Secondary School, Pungamuthur</p>
+                    </div>
+                    <div class="education-percentage">75%</div>
+                </div>
+                <p>Completed secondary school education with excellent academic performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Training Section -->
+    <section id="training">
+        <div class="container">
+            <h2 class="section-title">Professional Training</h2>
+            <div class="training-grid">
+                <div class="training-card">
+                    <h3>Python Course Training</h3>
+                    <p>Completed python Course Training from BESANT TECHNOLOGIES, Velachery Branch, Chennai.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Full Stack Development</h3>
+                    <p>Full stack development course complete from INFOCS, Pollachi.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Artificial Intelligence</h3>
+                    <p>Participated and completed the training program in Artificial intelligence with python through coincent at languify.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Youth Leadership</h3>
+                    <p>Training in youth leadership and community development, from Nehru Yuva Kendra.</p>
+                </div>
+                <div class="training-card">
+                    <h3>Internship</h3>
+                    <p>4 months experience in VVDN technologies manufacturing Pollachi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">My Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <img src="2.jpg" alt="Web Designing Award" class="achievement-img">
+                    <div class="achievement-info">
+                        <h3>1st Place in Web Designing</h3>
+                        <p>Won 1st place in WEB DESIGNING event in Cryptinas 2023, A National Level Technical Symposium.</p>
+                        <span class="view-certificate" onclick="openCertificate('web-design')">View Certificate</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="1.jpg" alt="Web Development Award" class="achievement-img">
+                    <div class="achievement-info">
+                        <h3>1st Place in Web Development</h3>
+                        <p>Won 1st place in WEB DEVELOPMENT event in HACKATHON 2K24 in Technical Symposium.</p>
+                        <span class="view-certificate" onclick="openCertificate('web-dev')">View Certificate</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="3.jpg" alt="Novel Ideas Award" class="achievement-img">
+                    <div class="achievement-info">
+                        <h3>1st Place in Novel Ideas</h3>
+                        <p>Won 1st place in "NOVEL IDEAS FOR SOCIETAL PROBLEMS" organized by IIC.</p>
+                        <span class="view-certificate" onclick="openCertificate('novel-ideas')">View Certificate</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="4.jpg" alt="Marketing Award" class="achievement-img">
+                    <div class="achievement-info">
+                        <h3>Marketing & Connection Events</h3>
+                        <p>Winners of "marketing" and "connection" event in inter college event.</p>
+                        <span class="view-certificate" onclick="openCertificate('marketing')">View Certificate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="cs.png" alt="College Website" class="project-img">
+                    <div class="project-info">
+                        <h3>College Department Website</h3>
+                        <p>Created a website in our college department purpose of staffs use.</p>
+                        <p>Technologies used: PHP, MYSQL</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="kar.png" alt="Full Stack Project" class="project-img">
+                    <div class="project-info">
+                        <h3>Bride Groom Match List Full Stack Application</h3>
+                        <p>Built a complete full stack application.</p>
+                        <p>Technologies used: Front-end, Back-end, Database</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modals -->
+    <div id="web-design-certificate" class="certificate-modal">
+        <span class="close-modal" onclick="closeCertificate('web-design')">&times;</span>
+        <div class="certificate-content">
+            <img src="2.jpg" alt="Web Design Certificate">
+        </div>
+    </div>
+    
+    <div id="web-dev-certificate" class="certificate-modal">
+        <span class="close-modal" onclick="closeCertificate('web-dev')">&times;</span>
+        <div class="certificate-content">
+            <img src="1.jpg" alt="Web Development Certificate">
+        </div>
+    </div>
+    
+    <div id="novel-ideas-certificate" class="certificate-modal">
+        <span class="close-modal" onclick="closeCertificate('novel-ideas')">&times;</span>
+        <div class="certificate-content">
+            <img src="3.jpg" alt="Novel Ideas Certificate">
+        </div>
+    </div>
+    
+    <div id="marketing-certificate" class="certificate-modal">
+        <span class="close-modal" onclick="closeCertificate('marketing')">&times;</span>
+        <div class="certificate-content">
+            <img src="4.jpg" alt="Marketing Certificate">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>If you'd like to discuss an opportunity or just say hello, feel free to reach out!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Andiyur, Udumalpet, 642207</p>
+                    <p><i class="fas fa-phone"></i> 9361608263</p>
+                    <p><i class="fas fa-envelope"></i> 0209sanjeev@gmail.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <a href="mailto:0209sanjeev@gmail.com" class="btn">Send Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy;  Sanjeev. All rights reserved.</p>
+            <p>I hereby declare that all the information furnished above is true to the best of my belief.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Certificate Modal Functions
+        function openCertificate(type) {
+            document.getElementById(`${type}-certificate`).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCertificate(type) {
+            document.getElementById(`${type}-certificate`).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'certificate-modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', revealOnScroll);
+        
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('section');
+            
+            for (let i = 0; i < sections.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = sections[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    sections[i].classList.add('active');
+                } else {
+                    sections[i].classList.remove('active');
+                }
+            }
+        }
+        
+        // Initialize
+        revealOnScroll();
+    </script>
+</body>
+</html>
